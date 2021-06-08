@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import AddTask from './Component/AddTask';
+import ListTask from './Component/ListTask';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 
 function App() {
+  const [filter, setFilter] = useState(false) 
+  const toggle=()=> {
+    setFilter(!filter)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <AddTask toggle={toggle} filter={filter}/>
+     <ListTask filter={filter}/>
     </div>
   );
 }
